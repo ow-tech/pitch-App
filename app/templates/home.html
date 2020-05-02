@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for pitch in pitches %}
+        <h4>{{pitch.author}}</h4>
+        <h6>Created on {{pitch.date_posted}}</h6>
+        <p>{{ pitch.your_pitch}}</p>
+
+    {% endfor %}
+
+{% endblock content %}

@@ -4,29 +4,41 @@ from .models import pitch
 from .forms import Your_pitchForm
 
 Pitch = pitch.Pitch
+pitches = [
+    {
+        'author': "COret SChafer",
+        'your_pitch': "first pitch ever",
+        'date_posted': 'April 20, 2019'
+    },
+    {
+        'author': "COret SChafer",
+        'your_pitch': "first pitch ever",
+        'date_posted': 'April 20, 2019'
+    }
+]
 
 
 #views
-@app.route('/', methods =['GET','POST'])
-def index():
-    '''
-    View root page function that returns the idnex page and its ata
+# @app.route('/', methods =['GET','POST'])
+# def index():
+#     '''
+#     View root page function that returns the idnex page and its ata
 
-    '''
+#     '''
 
-    form = Your_pitchForm()
+#     form = Your_pitchForm()
 
-    if form.validate_on_submit():
-        new_pitch = request.form
-        return render_template("new_pitch.html", new_pitch = new_pitch)
-        form = Your_pitchForm()
-        pitch = new_pitch
+#     if form.validate_on_submit():
+#         new_pitch = request.form
+#         return render_template("new_pitch.html", new_pitch = new_pitch)
+#         form = Your_pitchForm()
+#         pitch = new_pitch
 
-    return render_template('index.html', form = form)
+#     return render_template('index.html', form = form)
 
-@app.route('/pitches')
-def pitches():
-    return render_template('pitches.html')
+# @app.route('/pitches')
+# def pitches():
+#     return render_template('pitches.html')
 
 
 
@@ -45,3 +57,12 @@ def pitches():
 #         return redirect(url_for('index'))
 
 #     return render_template('new_pitch.html', form = pitch_form)
+
+@app.route('/')
+@app.route('/home')
+def home():
+    return render_template('home.html', pitches=pitches)
+
+@app.route('/about')
+def about():
+    return "<h1>About Page<h1>"

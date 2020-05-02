@@ -12,7 +12,7 @@ class PitchTest(unittest.TestCase):
         '''
         Set up method that will run before every Test
         '''
-        self.new_pitch = Pitch("I recently graduated from college with a degree in communications. I worked on the college newspaper as a reporter, and eventually, as the editor of the arts section. I'm looking for a job that will put my skills as a journalist to work")
+        self.new_pitch = Pitch("Alex","I recently graduated from college with a degree in communications. I worked on the college newspaper as a reporter, and eventually, as the editor of the arts section. I'm looking for a job that will put my skills as a journalist to work","April 21, 2019)
 
 
     def test_instance(self):
