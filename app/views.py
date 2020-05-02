@@ -9,4 +9,6 @@ def index():
     View root page function that returns the idnex page and its ata
 
     '''
-    return render_tamplate('index.html')
+    return render_template('index.html')
+
+@app.route('/pitch')
