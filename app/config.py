@@ -1,7 +1,8 @@
+class Config:
     '''
     General configuration parent class
     '''
-    pass
+    SECRET_KEY = "MAR123"
 
 
 
