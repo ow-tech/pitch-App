@@ -32,9 +32,9 @@ def about():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    if form.validate_on_submit()
-    flash(f'Account created for {form.username.data}!','success')
-    return redirect(url_for('home'))
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!','success')
+        return redirect(url_for('home'))
 
     return render_template('register.html', tittle = 'Register', form =form)
 
