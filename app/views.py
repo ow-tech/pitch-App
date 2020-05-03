@@ -3,19 +3,21 @@ from app import app
 from .models import pitch
 from .forms import Your_pitchForm
 
-Pitch = pitch.Pitch
-pitches = [
-    {
-        'author': "COret SChafer",
-        'your_pitch': "first pitch ever",
-        'date_posted': 'April 20, 2019'
-    },
-    {
-        'author': "COret SChafer",
-        'your_pitch': "first pitch ever",
-        'date_posted': 'April 20, 2019'
-    }
-]
+
+#dammy data
+    Pitch = pitch.Pitch
+    pitches = [
+        {
+            'author': "COret SChafer",
+            'your_pitch': "first pitch ever",
+            'date_posted': 'April 20, 2019'
+        },
+        {
+            'author': "COret SChafer",
+            'your_pitch': "first pitch ever",
+            'date_posted': 'April 20, 2019'
+        }
+    ]
 
 
 #views
