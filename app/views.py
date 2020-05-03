@@ -38,8 +38,15 @@ def register():
 
     return render_template('register.html', tittle = 'Register', form =form)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        if form.username.data == 'wagwanwekon' and form.password.data =='123':
+            flash('You have been logged in', 'success')
+            return redirect(url_for('home'))
 
+        else:
+            flash('Login Unsuccessful. Please check username and password', 'danger')
+            
     return render_template('login.html', tittle = 'Login', form =form)
