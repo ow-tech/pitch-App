@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect,url_for, flash
+from flask import render_template,request,redirect, url_for, flash
 from app import app
 from .models import pitch
 from .forms import Your_pitchForm, RegistrationForm, LoginForm
@@ -34,6 +34,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit()
     flash(f'Account created for {form.username.data}!','success')
+    return redirect(url_for('home'))
 
     return render_template('register.html', tittle = 'Register', form =form)
 

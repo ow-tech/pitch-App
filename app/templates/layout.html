@@ -19,6 +19,7 @@
         {% include 'navbar.html' %}
     {% endblock %}
     <div class ='container'>
+        {% with messages = get_flashed_messages(with_categories=true) %}
         {% block content %}{% endblock %}
     </div>
     
