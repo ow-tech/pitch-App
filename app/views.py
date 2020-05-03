@@ -74,3 +74,9 @@ def register():
     form = RegistrationForm()
 
     return render_template('register.html', tittle = 'Register', form =form)
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+
+    return render_template('login.html', tittle = 'Login', form =form)
