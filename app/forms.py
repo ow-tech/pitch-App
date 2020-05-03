@@ -10,7 +10,7 @@ class Your_pitchForm(FlaskForm):
     post = SubmitField('Submit')
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username' validators=[Required(),Length(min=2, max=50)])
+    username = StringField('Username', validators = [Required(),Length(min=2, max=50)])
     email = StringField('Email', validators=[Required(),Email()])
     password = PasswordField('Password', validators=[Required()]) 
     confirm_password = PasswordField('Confirm Password', validators=[Required(), EqualTo('password')])
@@ -18,7 +18,7 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('sign Up')     
 
 class LoginForm(FlaskForm):
-    username = StringField('Username' validators=[Required(),Length(min=2, max=50)])
+    username = StringField('Username', validators=[Required(),Length(min=2, max=50)])
     password = PasswordField('Password', validators=[Required()]) 
     remember = BooleanField('Remember Me')
 
