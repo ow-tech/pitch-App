@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for
 from app import app
 from .models import pitch
-from .forms import Your_pitchForm, Re
+from .forms import Your_pitchForm, RegistrationForm, LoginForm
 
 
 #dammy data
@@ -68,3 +68,9 @@ def home():
 @app.route('/about')
 def about():
     return "<h1>About Page<h1>"
+
+@app.route('/register')
+def register():
+    form = RegistrationForm()
+
+    return render_template('register.html', tittle = 'Register', form =form)
