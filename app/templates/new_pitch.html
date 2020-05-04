@@ -1,4 +1,37 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class ="content-section">
+    <form method = "POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class ="form-group">
+                {{form.your_pitch.label(class="form-control-label")}}
+                {{form.your_pitch(class="form-control-label form-control-lg")}}
+                
+            </div>
+            <!-- <div class ="form-group">
+                {{form.password.label(class="form-control-label")}}
+
+                {% if form.password.errors %}
+                    {{form.password(class="form-control-label form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{form.password(class="form-control-label form-control-lg")}}
+                {% endif %}
+            </div>
+            <div class="form-check">
+                {{form.remember(class="form-check-input")}}
+                {{form.remember.label(class="form-check-label")}}
+            </div> -->
+        </fieldset>
+        <div class="form-group">
+            {{form.submit(class="btn-outline-info")}}
+        </div>
+    </form>
+</div>
 
 {% endblock %}

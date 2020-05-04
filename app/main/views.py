@@ -3,7 +3,7 @@ from flask import render_template,request,redirect, url_for, flash
 from . import main
 from ..import db, bcrypt
 from ..models import Pitch, User
-from .forms import Your_pitchForm, RegistrationForm, LoginForm
+from .forms import Your_pitchForm, RegistrationForm, LoginForm, PitchForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -74,9 +74,13 @@ def account():
     image_file= url_for('static', filename='profile_pics/' + current_user.image_file)
     return render_template('profile.html', title="Profile", image_file=image_file)
 
-@main.route('/pitch/new')
+@main.route('/pitch/new',methods=['GET', 'POST'])
 @login_required
 def new_pitch():
-    return render_template('new_pitch.html', title='New Pitch')
+    form = PitchForm()
+    if form.validate_on_submit():
+        flash('Your post has been created!', 'success')
+        return redirect(url_for('main.home'))
+    return render_template('new_pitch.html', title='New Pitch', form=form)
 
 
