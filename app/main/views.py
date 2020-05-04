@@ -7,25 +7,10 @@ from .forms import Your_pitchForm, RegistrationForm, LoginForm, PitchForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 
-#dammy data
-# Pitch = pitch.Pitch
-pitches = [
-    {
-    'author': "COret SChafer",
-    'your_pitch': "first pitch ever",
-    'date_posted': 'April 20, 2019'
-    },
-    {
-    'author': "COret SChafer",
-    'your_pitch': "first pitch ever",
-    'date_posted': 'April 20, 2019'
-    }
-]
-
-
 @main.route('/')
 @main.route('/home')
 def home():
+    pitches = Pitch.query.all()
     return render_template('home.html', pitches=pitches)
 
 @main.route('/about')
@@ -79,6 +64,9 @@ def account():
 def new_pitch():
     form = PitchForm()
     if form.validate_on_submit():
+        pitch = Pitch(your_pitch = form.your_pitch.data, author = current_user)
+        db.session.add(pitch)
+        db.session.commit()
         flash('Your post has been created!', 'success')
         return redirect(url_for('main.home'))
     return render_template('new_pitch.html', title='New Pitch', form=form)
