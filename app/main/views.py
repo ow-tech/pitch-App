@@ -4,7 +4,7 @@ from . import main
 from ..import db, bcrypt
 from ..models import Pitch, User
 from .forms import Your_pitchForm, RegistrationForm, LoginForm
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 
 #dammy data
@@ -68,6 +68,9 @@ def logout():
     logout_user()
     return redirect(url_for('main.login'))
     
-
+@main.route('/profile')
+@login_required
+def account():
+    return render_template('profile.html', title="Profile")
 
 
