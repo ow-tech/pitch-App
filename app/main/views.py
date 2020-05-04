@@ -1,9 +1,10 @@
 from flask import render_template,request,redirect, url_for, flash
 # from app import app
 from . import main
-from ..import db, bycrypt
+from ..import db, bcrypt
 from ..models import Pitch, User
 from .forms import Your_pitchForm, RegistrationForm, LoginForm
+from flask_login import login_user 
 
 
 #dammy data
@@ -35,7 +36,7 @@ def about():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        hashed_password = bycrypt.generate_password_hash(form.password.data).decode('utf-8')
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(username = form.username.data, email =form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
@@ -48,8 +49,9 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if form.username.data == 'wagwanwekon' and form.password.data =='123':
-            flash('You have been logged in', 'success')
+        user = User.query.filter_by(username=form.username.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember.data)
             return redirect(url_for('main.home'))
 
         else:

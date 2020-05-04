@@ -4,10 +4,12 @@ from flask import Flask
 from config import config_options
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 
 db = SQLAlchemy()
-bycrypt = Bcrypt()
+bcrypt = Bcrypt()
+login_manager = LoginManager()
 #Initializing application
 def create_app(config_name):
 
@@ -20,7 +22,8 @@ def create_app(config_name):
     # Initializing Flask Extensions
     # bootsrap.init_app(app)
     db.init_app(app)
-    bycrypt.init_app(app)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
 
 
     #Registering the blueprint
