@@ -1,3 +1,6 @@
+from . import db
+
+
 class Pitch:
     """
     Pitch class to define Pitch objects
@@ -16,3 +19,14 @@ class Pitch:
     @classmethod
     def clear_pitches(cls):
         Pitch.all_pitches.clear()
+
+class User (db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50), unique=True, nullable = False)
+    email = db.Column(db.String(150), unique=True, nullable = False)
+    image_file =db.Column(db.String(20), nullable = False, default ='mypic.jpg')
+    password = db.Column(db.String(60), nullable = False)
+
+
+    def __repr__(self):
+        return f'User ("{self.username}","{self.email}","{self.image_file}")'
