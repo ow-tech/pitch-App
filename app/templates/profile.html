@@ -10,4 +10,14 @@
     </div>
   </div>
 
+  <div class ="container">
+        
+    <!-- {% for pitch in pitches %} -->
+    <!-- <img class='rounded-circle' src="{{ url_for('static', filename='profile_pics/' + pitch.author.image_file)}}"> -->
+    <!-- <h4>{{pitch.author.username}}</h4> -->
+    <!-- <h6>Created on {{pitch.date_posted.strftime('%Y-%m-%d')}}</h6> -->
+    <p>{{ current_user.pitches}}</p>
+    <!-- {% endfor %} -->
+</div>
+
 {% endblock %}
