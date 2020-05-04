@@ -31,16 +31,16 @@ class User (db.Model):
     pitches = db.relationship('Pitch', backref='author', lazy= True)
 
 
-        @property
-        def pass_secure(self):
-            raise AttributeError("You cannot read the passwor attribute")
+    # @property
+    # def pass_secure(self):
+    #     raise AttributeError("You cannot read the passwor attribute")
 
-        @pass_secure.setter
-        def pass_secure(self, pass_secure):
-            self.password = generate_password_hash(pass_secure)
+    # @pass_secure.setter
+    # def pass_secure(self, pass_secure):
+    #     self.password = generate_password_hash(pass_secure)
 
-        def verify_pass_secure(self, pass_secure):
-            return check_password_hash(self.password, pass_secure)
+    # def verify_pass_secure(self, pass_secure):
+    #         return check_password_hash(self.password, pass_secure)
 
 
     def __repr__(self):

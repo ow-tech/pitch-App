@@ -1,5 +1,5 @@
 from flask import render_template,request,redirect, url_for, flash
-from app import app
+from app import app, db, bycrypt
 from .models import pitch
 from .forms import Your_pitchForm, RegistrationForm, LoginForm
 
@@ -33,8 +33,12 @@ def about():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(f'Account created for {form.username.data}!','success')
-        return redirect(url_for('home'))
+        hashed_password = bycrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username = form.username.data, email =form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash(f'Account created for {form.username.data}! You can login Now','success')
+        return redirect(url_for('login'))
 
     return render_template('register.html', tittle = 'Register', form =form)
 
