@@ -71,6 +71,12 @@ def logout():
 @main.route('/profile')
 @login_required
 def account():
-    return render_template('profile.html', title="Profile")
+    image_file= url_for('static', filename='profile_pics/' + current_user.image_file)
+    return render_template('profile.html', title="Profile", image_file=image_file)
+
+@main.route('/pitch/new')
+@login_required
+def new_pitch():
+    return render_template('new_pitch.html', title='New Pitch')
 
 

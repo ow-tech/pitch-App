@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import Required, Length, Email, EqualTo, ValidationError
-from app.models import User
+from app.models import User, Pitch
 
 
 class Your_pitchForm(FlaskForm):
@@ -35,3 +35,7 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember Me')
 
     submit = SubmitField('Login')  
+
+class PitchForm(FlaskForm):
+    your_pitch = TextAreaField("Pitch", validators=[DataRequired()])
+    submit = SubmitField('Post')
