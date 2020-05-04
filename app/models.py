@@ -1,7 +1,8 @@
 from . import db
+from datetime import datetime
 
 
-class Pitch:
+
     """
     Pitch class to define Pitch objects
     """
@@ -30,3 +31,9 @@ class User (db.Model):
 
     def __repr__(self):
         return f'User ("{self.username}","{self.email}","{self.image_file}")'
+
+class Pitch (db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    author = db.Column(db.String(50), nullable = False)
+    date_posted = db.Column(db.DateTime, nullable= False, default= datetime.utcnow)
+    your_pitch = db.Column(db.Text, nullable=False)
