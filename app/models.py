@@ -16,3 +16,5 @@ class Pitch:
     @classmethod
     def clear_pitches(cls):
         Pitch.all_pitches.clear()
+
+class

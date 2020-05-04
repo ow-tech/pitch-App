@@ -1,8 +1,10 @@
+import os
 class Config:
     '''
     General configuration parent class
     '''
-    SECRET_KEY = "MAR123"
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://alex:alex@localhost/pitch'
 
 
 
@@ -25,3 +27,8 @@ class DevConfig(Config):
     '''
 
     DEBUG = True
+
+config_options = {
+    'development':DevConfig,
+    'production':ProdConfig
+}

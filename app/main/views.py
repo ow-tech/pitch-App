@@ -1,6 +1,7 @@
 from flask import render_template,request,redirect, url_for, flash
-from app import app
-from .models import pitch
+# from app import app
+from . import main
+from ..models import pitch
 from .forms import Your_pitchForm, RegistrationForm, LoginForm
 
 
@@ -20,16 +21,16 @@ pitches = [
 ]
 
 
-@app.route('/')
-@app.route('/home')
+@main.route('/')
+@main.route('/home')
 def home():
     return render_template('home.html', pitches=pitches)
 
-@app.route('/about')
+@main.route('/about')
 def about():
     return "<h1>About Page<h1>"
 
-@app.route('/register', methods=['GET', 'POST'])
+@main.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -38,8 +39,15 @@ def register():
 
     return render_template('register.html', tittle = 'Register', form =form)
 
-@app.route('/login')
+@main.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        if form.username.data == 'wagwanwekon' and form.password.data =='123':
+            flash('You have been logged in', 'success')
+            return redirect(url_for('home'))
 
+        else:
+            flash('Login Unsuccessful. Please check username and password', 'danger')
+            
     return render_template('login.html', tittle = 'Login', form =form)
