@@ -1,12 +1,12 @@
 from flask import render_template,request,redirect, url_for, flash
 # from app import app
 from . import main
-from ..models import pitch
+from ..models import Pitch
 from .forms import Your_pitchForm, RegistrationForm, LoginForm
 
 
 #dammy data
-Pitch = pitch.Pitch
+# Pitch = pitch.Pitch
 pitches = [
     {
     'author': "COret SChafer",
