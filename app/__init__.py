@@ -5,10 +5,12 @@ from config import config_options
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from flask_mail import Mail
 
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
+mail = Mail()
 login_manager = LoginManager()
 login_manager.login_view = 'login'
 #Initializing application
@@ -25,6 +27,7 @@ def create_app(config_name):
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
+    mail.init_app(app)
 
 
     #Registering the blueprint

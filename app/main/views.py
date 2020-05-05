@@ -5,6 +5,7 @@ from ..import db, bcrypt
 from ..models import Pitch, User
 from .forms import Your_pitchForm, RegistrationForm, LoginForm, PitchForm
 from flask_login import login_user, current_user, logout_user, login_required
+from ..emails import mail_message
 
 
 @main.route('/')
@@ -27,6 +28,7 @@ def register():
         user = User(username = form.username.data, email =form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
+        mail_message("Welcome to Pitch","email/welcome_user",user.email,user=user)
         flash(f'Account created for {form.username.data}! You can login Now','success')
         return redirect(url_for('main.login'))
 
@@ -70,5 +72,7 @@ def new_pitch():
         flash('Your post has been created!', 'success')
         return redirect(url_for('main.home'))
     return render_template('new_pitch.html', title='New Pitch', form=form)
+
+
 
 
