@@ -38,6 +38,7 @@ brings a form for posting pitch
 
 
 ## Live link to website
+-https://pitchappmine.herokuapp.com/
 
 
 ## contacts 
