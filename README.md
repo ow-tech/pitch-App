@@ -45,7 +45,8 @@ brings a form for posting pitch
 
 - for enquries or comments
 
- alicemwihaki99@gmail.com
+ alexbarasa0723@gmail.com
+ 
 
 
 
